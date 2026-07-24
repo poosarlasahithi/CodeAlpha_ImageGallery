@@ -139,6 +139,14 @@ ImageGallery/
 
 `Nature` · `Mountains` · `Cars` · `Architecture` · `Animals` · `Travel` · `Food` · `Technology` · `People`
 
+📄 License
+This project was developed as part of the CodeAlpha Frontend Development Internship for educational purposes.
+
+🌐 Live Demo 
+🚀 Try the App: vercel: https://code-alpha-image-gallery-virid.vercel.app/
+
+📂 GitHub Repository
+ https://github.com/poosarlasahithi/CodeAlpha_ImageGallery
 ---
 
 ## 👩‍💻 Author
@@ -146,8 +154,7 @@ ImageGallery/
 **Poosarla Sahithi** — Frontend Developer Intern  
 Built as part of the **CodeAlpha** Internship Program
 
----
+GitHub: https://github.com/poosarlasahithi
+LinkedIn: www.linkedin.com/in/sahithi-poosarla-48667a371
 
-## 📄 License
 
-MIT — Free to use and modify.
