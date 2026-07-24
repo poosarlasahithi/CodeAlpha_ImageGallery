@@ -143,10 +143,11 @@ ImageGallery/
 
 This project was developed as part of the CodeAlpha Frontend Development Internship for educational purposes.
 
-##🌐 Live Demo 
+## 🌐 Live Demo 
+
 🚀 Try the App: vercel: https://code-alpha-image-gallery-virid.vercel.app/
 
-##📂 GitHub Repository
+## 📂 GitHub Repository
 
  https://github.com/poosarlasahithi/CodeAlpha_ImageGallery
 ---
