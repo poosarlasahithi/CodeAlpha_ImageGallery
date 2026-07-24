@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IMAGE GALLERY — A premium photography gallery experience with smooth animations, lightbox viewing, and stunning visual design." />
+  <meta name="keywords" content="photography gallery, image gallery, portfolio, lightbox, masonry grid" />
+  <meta name="author" content="IMAGE GALLERY" />
+  <meta property="og:title" content="IMAGE GALLERY — Premium Photography Gallery" />
+  <meta property="og:description" content="Explore stunning photography with an immersive lightbox viewing experience." />
+  <title>IMAGE GALLERY — Premium Photography</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark-mode" data-theme="dark">
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              LOADING SCREEN                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="loading-screen" aria-hidden="true">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <span class="loader-logo-icon">◈</span>
+        <span class="loader-logo-text">IMAGE GALLERY</span>
+      </div>
+      <div class="loader-bar-wrapper">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+      <p class="loader-tagline">Loading masterpieces…</p>
+    </div>
+    <div class="loader-blob lb1"></div>
+    <div class="loader-blob lb2"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              SCROLL PROGRESS BAR             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              NAVIGATION BAR                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <header id="navbar" role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <!-- Logo -->
+      <a href="#hero" class="nav-logo" aria-label="IMAGE GALLERY Home">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">IMAGE GALLERY</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list" id="nav-links">
+        <li><a href="#gallery" class="nav-link" aria-label="Go to Gallery section">Gallery</a></li>
+        <li><a href="#collections" class="nav-link" aria-label="Go to Collections section">Collections</a></li>
+        <li><a href="#stats" class="nav-link" aria-label="Go to Statistics section">Stats</a></li>
+        <li><a href="#about" class="nav-link" aria-label="Go to About section">About</a></li>
+        <li><a href="#contact" class="nav-link" aria-label="Go to Contact section">Contact</a></li>
+      </ul>
+
+      <!-- Right Controls -->
+      <div class="nav-controls">
+        <!-- Theme Picker -->
+        <div class="theme-picker-wrapper" id="theme-picker-wrapper">
+          <button class="theme-toggle" id="theme-toggle"
+                  aria-haspopup="listbox" aria-expanded="false"
+                  aria-label="Choose colour theme">
+            <span class="theme-toggle-dot" id="theme-toggle-dot"></span>
+            <span class="theme-toggle-label" id="theme-toggle-label">Dark Modern</span>
+            <span class="theme-toggle-caret" aria-hidden="true">&#9660;</span>
+          </button>
+
+          <div class="theme-panel" id="theme-panel" role="listbox" aria-label="Colour themes">
+            <p class="theme-panel-heading">Choose Theme</p>
+
+            <!-- Dark Modern -->
+            <button class="theme-option active" data-theme="dark-modern" role="option" aria-selected="true">
+              <span class="theme-opt-swatch">
+                <span style="background:#050816"></span>
+                <span style="background:#00E5FF"></span>
+                <span style="background:#7C3AED"></span>
+              </span>
+              <span class="theme-opt-name">Dark Modern</span>
+              <span class="theme-opt-check" aria-hidden="true">&#10003;</span>
+            </button>
+
+            <!-- Light Minimal -->
+            <button class="theme-option" data-theme="light-minimal" role="option" aria-selected="false">
+              <span class="theme-opt-swatch">
+                <span style="background:#FFFFFF;border:1px solid #ddd"></span>
+                <span style="background:#2563EB"></span>
+                <span style="background:#9CA3AF"></span>
+              </span>
+              <span class="theme-opt-name">Light Minimal</span>
+              <span class="theme-opt-check" aria-hidden="true">&#10003;</span>
+            </button>
+
+            <!-- Neon Cyberpunk -->
+            <button class="theme-option" data-theme="neon-cyberpunk" role="option" aria-selected="false">
+              <span class="theme-opt-swatch">
+                <span style="background:#0d0020"></span>
+                <span style="background:#00FFFF"></span>
+                <span style="background:#BF00FF"></span>
+              </span>
+              <span class="theme-opt-name">Neon Cyberpunk</span>
+              <span class="theme-opt-check" aria-hidden="true">&#10003;</span>
+            </button>
+
+            <!-- Nature -->
+            <button class="theme-option" data-theme="nature" role="option" aria-selected="false">
+              <span class="theme-opt-swatch">
+                <span style="background:#1A2A1A"></span>
+                <span style="background:#4ADE80"></span>
+                <span style="background:#FDE68A"></span>
+              </span>
+              <span class="theme-opt-name">Nature</span>
+              <span class="theme-opt-check" aria-hidden="true">&#10003;</span>
+            </button>
+
+            <!-- Sunset -->
+            <button class="theme-option" data-theme="sunset" role="option" aria-selected="false">
+              <span class="theme-opt-swatch">
+                <span style="background:#1A0A0F"></span>
+                <span style="background:#FB923C"></span>
+                <span style="background:#C026D3"></span>
+              </span>
+              <span class="theme-opt-name">Sunset</span>
+              <span class="theme-opt-check" aria-hidden="true">&#10003;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hamburger Menu -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              HERO SECTION                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="hero" aria-label="Hero section">
+    <!-- Floating Blobs -->
+    <div class="blob b1" aria-hidden="true"></div>
+    <div class="blob b2" aria-hidden="true"></div>
+    <div class="blob b3" aria-hidden="true"></div>
+    <div class="blob b4" aria-hidden="true"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-content" id="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Premium Photography Experience
+      </div>
+      <h1 class="hero-heading">
+        <span class="word-reveal">Explore</span>
+        <span class="word-reveal accent-cyan">Stunning</span>
+        <br />
+        <span class="word-reveal">Photography</span>
+      </h1>
+      <p class="hero-subtitle">
+        A modern gallery experience with smooth animations and immersive lightbox viewing.
+        Discover breathtaking moments captured by world-class photographers.
+      </p>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn btn-primary" id="explore-btn" aria-label="Explore the gallery">
+          <span class="btn-text">Explore Gallery</span>
+          <span class="btn-icon">→</span>
+        </a>
+        <a href="#about" class="btn btn-ghost" aria-label="Learn more about IMAGE GALLERY">
+          <span>Learn More</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">30+</span>
+          <span class="hero-stat-label">Curated Images</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">8</span>
+          <span class="hero-stat-label">Categories</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4K</span>
+          <span class="hero-stat-label">Resolution</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-hint-text">Scroll to explore</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              GALLERY SECTION                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="gallery" aria-label="Image gallery">
+    <div class="section-header reveal-on-scroll">
+      <span class="section-tag">Visual Collection</span>
+      <h2 class="section-title">Our Gallery</h2>
+      <p class="section-sub">Browse through our handpicked collection of breathtaking photographs from around the world.</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-wrapper reveal-on-scroll">
+      <div class="search-box">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Search images by title or category…"
+          aria-label="Search gallery images"
+          autocomplete="off"
+        />
+        <button class="search-clear" id="search-clear" aria-label="Clear search" hidden>✕</button>
+      </div>
+      <p class="search-results-count" id="search-count" aria-live="polite"></p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filters-wrapper reveal-on-scroll" role="group" aria-label="Filter images by category">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="nature" aria-pressed="false">🌿 Nature</button>
+      <button class="filter-btn" data-filter="mountains" aria-pressed="false">⛰ Mountains</button>
+      <button class="filter-btn" data-filter="cars" aria-pressed="false">🚗 Cars</button>
+      <button class="filter-btn" data-filter="architecture" aria-pressed="false">🏛 Architecture</button>
+      <button class="filter-btn" data-filter="animals" aria-pressed="false">🦁 Animals</button>
+      <button class="filter-btn" data-filter="travel" aria-pressed="false">✈️ Travel</button>
+      <button class="filter-btn" data-filter="food" aria-pressed="false">🍽 Food</button>
+      <button class="filter-btn" data-filter="technology" aria-pressed="false">💻 Technology</button>
+      <button class="filter-btn" data-filter="people" aria-pressed="false">👤 People</button>
+    </div>
+
+    <!-- Masonry Gallery Grid -->
+    <div class="gallery-grid" id="gallery-grid" role="list" aria-label="Photo gallery grid">
+
+      <!-- ── Nature ── -->
+      <article class="gallery-item" data-category="nature" data-title="Morning Dew" role="listitem">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Morning Dew — lush green meadow with morning mist"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Nature</span>
+            <h3 class="gallery-title">Morning Dew</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Morning Dew to favorites" data-id="img1" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Morning Dew in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item tall" data-category="mountains" data-title="Alpine Peak">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 700'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Alpine Peak — majestic snow-capped mountain summit"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Mountains</span>
+            <h3 class="gallery-title">Alpine Peak</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Alpine Peak to favorites" data-id="img2" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Alpine Peak in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="cars" data-title="Speed Demon">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Speed Demon — luxury sports car on open road"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Cars</span>
+            <h3 class="gallery-title">Speed Demon</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Speed Demon to favorites" data-id="img3" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Speed Demon in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item wide" data-category="architecture" data-title="City Skyline">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="City Skyline — dramatic urban architecture at dusk"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Architecture</span>
+            <h3 class="gallery-title">City Skyline</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add City Skyline to favorites" data-id="img4" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View City Skyline in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="animals" data-title="Wild Spirit">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Wild Spirit — majestic fox in a forest clearing"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Animals</span>
+            <h3 class="gallery-title">Wild Spirit</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Wild Spirit to favorites" data-id="img5" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Wild Spirit in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item tall" data-category="travel" data-title="Venice Canal">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 700'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Venice Canal — iconic Italian waterway at sunset"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Travel</span>
+            <h3 class="gallery-title">Venice Canal</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Venice Canal to favorites" data-id="img6" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Venice Canal in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="food" data-title="Gourmet Art">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Gourmet Art — beautifully plated fine dining dish"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Food</span>
+            <h3 class="gallery-title">Gourmet Art</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Gourmet Art to favorites" data-id="img7" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Gourmet Art in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="technology" data-title="Circuit Dreams">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Circuit Dreams — macro shot of computer circuit board"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Technology</span>
+            <h3 class="gallery-title">Circuit Dreams</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Circuit Dreams to favorites" data-id="img8" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Circuit Dreams in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="people" data-title="Portrait">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Portrait — stunning fashion portrait with dramatic lighting"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">People</span>
+            <h3 class="gallery-title">Portrait</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Portrait to favorites" data-id="img9" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Portrait in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item tall" data-category="nature" data-title="Enchanted Forest">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 700'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Enchanted Forest — sunlight streaming through tall ancient trees"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Nature</span>
+            <h3 class="gallery-title">Enchanted Forest</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Enchanted Forest to favorites" data-id="img10" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Enchanted Forest in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="mountains" data-title="Misty Valley">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Misty Valley — dramatic mountain valley shrouded in morning fog"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Mountains</span>
+            <h3 class="gallery-title">Misty Valley</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Misty Valley to favorites" data-id="img11" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Misty Valley in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="cars" data-title="Classic Elegance">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Classic Elegance — vintage luxury automobile in studio"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Cars</span>
+            <h3 class="gallery-title">Classic Elegance</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Classic Elegance to favorites" data-id="img12" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Classic Elegance in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item wide" data-category="travel" data-title="Santorini Blue">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Santorini Blue — iconic white buildings with blue domes in Greece"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Travel</span>
+            <h3 class="gallery-title">Santorini Blue</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Santorini Blue to favorites" data-id="img13" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Santorini Blue in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="animals" data-title="Ocean Monarch">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Ocean Monarch — killer whale breaching the Pacific ocean"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Animals</span>
+            <h3 class="gallery-title">Ocean Monarch</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Ocean Monarch to favorites" data-id="img14" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Ocean Monarch in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="architecture" data-title="Glass Tower">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Glass Tower — ultra modern glass skyscraper reflecting clouds"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Architecture</span>
+            <h3 class="gallery-title">Glass Tower</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Glass Tower to favorites" data-id="img15" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Glass Tower in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item tall" data-category="people" data-title="Golden Hour">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 700'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Golden Hour — candid street portrait at sunset"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">People</span>
+            <h3 class="gallery-title">Golden Hour</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Golden Hour to favorites" data-id="img16" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Golden Hour in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="food" data-title="Fresh Harvest">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Fresh Harvest — colorful organic vegetables and herbs"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Food</span>
+            <h3 class="gallery-title">Fresh Harvest</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Fresh Harvest to favorites" data-id="img17" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Fresh Harvest in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="technology" data-title="Data Stream">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Data Stream — abstract digital network visualization from space"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Technology</span>
+            <h3 class="gallery-title">Data Stream</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Data Stream to favorites" data-id="img18" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Data Stream in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="nature" data-title="Ocean Sunset">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Ocean Sunset — blazing colors reflecting on a calm tropical beach"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Nature</span>
+            <h3 class="gallery-title">Ocean Sunset</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Ocean Sunset to favorites" data-id="img19" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Ocean Sunset in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item wide" data-category="mountains" data-title="Himalayan Dawn">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Himalayan Dawn — first light on towering Himalayan peaks"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Mountains</span>
+            <h3 class="gallery-title">Himalayan Dawn</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Himalayan Dawn to favorites" data-id="img20" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Himalayan Dawn in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="cars" data-title="Midnight Racer">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Midnight Racer — blue sports car with light trails at night"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Cars</span>
+            <h3 class="gallery-title">Midnight Racer</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Midnight Racer to favorites" data-id="img21" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Midnight Racer in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item tall" data-category="architecture" data-title="Spiral Staircase">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 700'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Spiral Staircase — elegant architectural helix viewed from below"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Architecture</span>
+            <h3 class="gallery-title">Spiral Staircase</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Spiral Staircase to favorites" data-id="img22" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Spiral Staircase in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="animals" data-title="Predator's Gaze">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Predator's Gaze — intense close-up of a tiger's amber eyes"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Animals</span>
+            <h3 class="gallery-title">Predator's Gaze</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Predator's Gaze to favorites" data-id="img23" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Predator's Gaze in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="travel" data-title="Tokyo Neon">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Tokyo Neon — vibrant neon lights in Tokyo street at night"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Travel</span>
+            <h3 class="gallery-title">Tokyo Neon</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Tokyo Neon to favorites" data-id="img24" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Tokyo Neon in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="food" data-title="Dessert Heaven">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Dessert Heaven — artisan chocolate cake with gold leaf decoration"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Food</span>
+            <h3 class="gallery-title">Dessert Heaven</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Dessert Heaven to favorites" data-id="img25" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Dessert Heaven in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="technology" data-title="AI Vision">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="AI Vision — glowing neural network visualization"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Technology</span>
+            <h3 class="gallery-title">AI Vision</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add AI Vision to favorites" data-id="img26" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View AI Vision in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item wide" data-category="nature" data-title="Waterfall Serenity">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Waterfall Serenity — long-exposure cascading waterfall in a lush gorge"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Nature</span>
+            <h3 class="gallery-title">Waterfall Serenity</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Waterfall Serenity to favorites" data-id="img27" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Waterfall Serenity in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="people" data-title="Street Story">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Street Story — authentic black and white street portrait"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">People</span>
+            <h3 class="gallery-title">Street Story</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Street Story to favorites" data-id="img28" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Street Story in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item tall" data-category="travel" data-title="Northern Lights">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 700'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Northern Lights — aurora borealis dancing over snowy Scandinavian landscape"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Travel</span>
+            <h3 class="gallery-title">Northern Lights</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Northern Lights to favorites" data-id="img29" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Northern Lights in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="architecture" data-title="Ancient Colosseum">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Ancient Colosseum — Rome's iconic amphitheater under dramatic sky"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Architecture</span>
+            <h3 class="gallery-title">Ancient Colosseum</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Ancient Colosseum to favorites" data-id="img30" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Ancient Colosseum in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="animals" data-title="Eagle Flight">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Eagle Flight — bald eagle soaring over mountain landscape"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Animals</span>
+            <h3 class="gallery-title">Eagle Flight</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Eagle Flight to favorites" data-id="img31" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Eagle Flight in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="gallery-item" data-category="mountains" data-title="Volcano Majesty">
+        <div class="gallery-card">
+          <img
+            data-src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect fill='%230B1120'/%3E%3C/svg%3E"
+            alt="Volcano Majesty — dramatic mountain landscape with glowing crater"
+            class="gallery-img lazy"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">Mountains</span>
+            <h3 class="gallery-title">Volcano Majesty</h3>
+            <div class="gallery-actions">
+              <button class="action-btn favorite-btn" aria-label="Add Volcano Majesty to favorites" data-id="img32" title="Favorite">♡</button>
+              <button class="action-btn view-btn" aria-label="View Volcano Majesty in lightbox" title="View">⊕</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- No Results Placeholder -->
+      <div class="no-results" id="no-results" hidden aria-live="polite">
+        <span class="no-results-icon">🔭</span>
+        <p>No images found. Try a different search or filter.</p>
+      </div>
+
+    </div><!-- /.gallery-grid -->
+
+    <!-- Load More -->
+    <div class="load-more-wrapper">
+      <button class="btn btn-ghost load-more-btn" id="load-more-btn" aria-label="Load more images">
+        Load More Images <span>↓</span>
+      </button>
+    </div>
+
+  </section><!-- /#gallery -->
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              STATISTICS SECTION              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="stats" aria-label="Gallery statistics" class="stats-section">
+    <div class="blob b5" aria-hidden="true"></div>
+    <div class="section-header reveal-on-scroll">
+      <span class="section-tag">By the Numbers</span>
+      <h2 class="section-title">Gallery in Stats</h2>
+    </div>
+    <div class="stats-grid reveal-on-scroll">
+      <div class="stat-card glass">
+        <span class="stat-icon">🖼</span>
+        <span class="stat-number" data-target="320" data-suffix="+">0</span>
+        <span class="stat-label">Images</span>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-icon">📁</span>
+        <span class="stat-number" data-target="12" data-suffix="">0</span>
+        <span class="stat-label">Collections</span>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-icon">📸</span>
+        <span class="stat-number" data-target="48" data-suffix="">0</span>
+        <span class="stat-label">Photographers</span>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-icon">👁</span>
+        <span class="stat-number" data-target="125000" data-suffix="+">0</span>
+        <span class="stat-label">Visitors</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              ABOUT SECTION                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="about" aria-label="About IMAGE GALLERY">
+    <div class="section-header reveal-on-scroll">
+      <span class="section-tag">Our Story</span>
+      <h2 class="section-title">About Us</h2>
+      <p class="section-sub">We believe every photograph tells a story worth sharing.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card glass reveal-on-scroll">
+        <span class="about-icon">🎯</span>
+        <h3>Our Mission</h3>
+        <p>To curate and celebrate exceptional photography from talented artists around the globe, providing a premium platform for visual storytelling.</p>
+      </div>
+      <div class="about-card glass reveal-on-scroll" style="--reveal-delay: 0.1s">
+        <span class="about-icon">✨</span>
+        <h3>Premium Quality</h3>
+        <p>Every image is carefully selected for composition, lighting, and emotional impact. We maintain the highest standards for every piece in our collection.</p>
+      </div>
+      <div class="about-card glass reveal-on-scroll" style="--reveal-delay: 0.2s">
+        <span class="about-icon">🌍</span>
+        <h3>Global Community</h3>
+        <p>Join thousands of photography enthusiasts and professionals from over 80 countries who trust IMAGE GALLERY for inspiration and discovery.</p>
+      </div>
+      <div class="about-card glass reveal-on-scroll" style="--reveal-delay: 0.3s">
+        <span class="about-icon">⚡</span>
+        <h3>Blazing Fast</h3>
+        <p>Built with performance in mind — lazy loading, optimized assets, and smooth animations ensure an incredibly responsive experience on any device.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              CONTACT SECTION                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="contact" aria-label="Contact us">
+    <div class="blob b6" aria-hidden="true"></div>
+    <div class="section-header reveal-on-scroll">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-sub">Have a question or want to submit your work? We'd love to hear from you.</p>
+    </div>
+    <div class="contact-wrapper reveal-on-scroll">
+      <form class="contact-form glass" id="contact-form" novalidate aria-label="Contact form">
+        <div class="form-group">
+          <label for="contact-name" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="contact-name"
+            name="name"
+            class="form-input"
+            placeholder="Your full name"
+            autocomplete="name"
+            required
+            aria-required="true"
+          />
+          <span class="form-error" id="name-error" role="alert" aria-live="polite"></span>
+        </div>
+        <div class="form-group">
+          <label for="contact-email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            id="contact-email"
+            name="email"
+            class="form-input"
+            placeholder="your@email.com"
+            autocomplete="email"
+            required
+            aria-required="true"
+          />
+          <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+        </div>
+        <div class="form-group">
+          <label for="contact-subject" class="form-label">Subject</label>
+          <input
+            type="text"
+            id="contact-subject"
+            name="subject"
+            class="form-input"
+            placeholder="How can we help?"
+          />
+        </div>
+        <div class="form-group">
+          <label for="contact-message" class="form-label">Message</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            class="form-input form-textarea"
+            placeholder="Tell us about your project or question…"
+            rows="5"
+            required
+            aria-required="true"
+          ></textarea>
+          <span class="form-error" id="message-error" role="alert" aria-live="polite"></span>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" id="form-submit-btn">
+          <span class="btn-text">Send Message</span>
+          <span class="btn-icon">→</span>
+        </button>
+        <p class="form-success" id="form-success" hidden role="status" aria-live="polite">
+          ✅ Thank you! Your message has been sent successfully.
+        </p>
+      </form>
+
+      <div class="contact-info">
+        <div class="contact-info-card glass reveal-on-scroll" style="--reveal-delay: 0.15s">
+          <span class="ci-icon">📧</span>
+          <div>
+            <h4>Email Us</h4>
+            <p>hello@aperture.gallery</p>
+          </div>
+        </div>
+        <div class="contact-info-card glass reveal-on-scroll" style="--reveal-delay: 0.25s">
+          <span class="ci-icon">📍</span>
+          <div>
+            <h4>Location</h4>
+            <p>San Francisco, CA, USA</p>
+          </div>
+        </div>
+        <div class="contact-info-card glass reveal-on-scroll" style="--reveal-delay: 0.35s">
+          <span class="ci-icon">⏰</span>
+          <div>
+            <h4>Response Time</h4>
+            <p>Within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              FOOTER                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <footer id="footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo footer-logo" aria-label="Go to top">
+          <span class="logo-icon">◈</span>
+          <span class="logo-text">IMAGE GALLERY</span>
+        </a>
+        <p class="footer-tagline">Capturing the world, one frame at a time.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Follow us on Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Connect with us on LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="View our GitHub repository" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow us on Twitter / X" title="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links-group">
+        <h4>Gallery</h4>
+        <ul>
+          <li><a href="#gallery">All Images</a></li>
+          <li><a href="#gallery">Nature</a></li>
+          <li><a href="#gallery">Architecture</a></li>
+          <li><a href="#gallery">Travel</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 IMAGE GALLERY. Crafted with ♥ for photography lovers.</p>
+      <p>Built with pure HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              LIGHTBOX                        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-container">
+      <!-- Close -->
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox (Esc)">✕</button>
+
+      <!-- Image -->
+      <div class="lightbox-img-wrapper">
+        <img src="" alt="" id="lightbox-img" class="lightbox-img" />
+        <div class="lightbox-loader" id="lightbox-loader" aria-hidden="true"></div>
+      </div>
+
+      <!-- Navigation -->
+      <button class="lightbox-nav lb-prev glass" id="lb-prev" aria-label="Previous image (←)">‹</button>
+      <button class="lightbox-nav lb-next glass" id="lb-next" aria-label="Next image (→)">›</button>
+
+      <!-- Info Bar -->
+      <div class="lightbox-info glass">
+        <div class="lb-meta">
+          <span class="lb-badge" id="lb-badge"></span>
+          <h3 class="lb-title" id="lb-title"></h3>
+        </div>
+        <div class="lb-controls">
+          <span class="lb-counter" id="lb-counter"></span>
+          <button class="lb-action-btn favorite-btn" id="lb-fav-btn" aria-label="Toggle favorite" title="Favorite">♡</button>
+          <a class="lb-action-btn" id="lb-download" download aria-label="Download image" title="Download">↓</a>
+          <button class="lb-action-btn" id="lb-fullscreen" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              BACK TO TOP BUTTON              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <button id="back-to-top" aria-label="Back to top" title="Back to top" hidden>
+    <span>↑</span>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
