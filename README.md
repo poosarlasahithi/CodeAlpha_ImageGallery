@@ -143,7 +143,7 @@ ImageGallery/
 
 ## 👩‍💻 Author
 
-**Sahithi** — Frontend Developer Intern  
+**Poosarla Sahithi** — Frontend Developer Intern  
 Built as part of the **CodeAlpha** Internship Program
 
 ---
