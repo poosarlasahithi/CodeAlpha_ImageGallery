@@ -139,13 +139,15 @@ ImageGallery/
 
 `Nature` · `Mountains` · `Cars` · `Architecture` · `Animals` · `Travel` · `Food` · `Technology` · `People`
 
-📄 License
+## 📄 License
+
 This project was developed as part of the CodeAlpha Frontend Development Internship for educational purposes.
 
 🌐 Live Demo 
 🚀 Try the App: vercel: https://code-alpha-image-gallery-virid.vercel.app/
 
 📂 GitHub Repository
+
  https://github.com/poosarlasahithi/CodeAlpha_ImageGallery
 ---
 
